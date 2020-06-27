@@ -1,0 +1,12 @@
+<h1 class="app-title">Pegonet</h1>
+
+<!-- <video class="movie-screen" src="{{ movie_url }}" controls autoplay ></video> -->
+
+<form (submit)="submitForm()">
+  <input [(ngModel)]="content" placeholder="Inserir pesquisa..."  name="content"/>
+  <button>Inserir</button>
+  <button type="button" (click)="listRequests()">Listar</button>
+</form> 
+
+
+<!-- <router-outlet></router-outlet> --> 

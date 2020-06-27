@@ -1,0 +1,17 @@
+.movie-screen {
+    width: 100%;
+    height: 500px;
+    background-color: black;
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(3,  1fr);
+    justify-items: center;
+    align-items: self-end;
+}
+
+.app-title {
+    color: red;
+    text-align: center;
+}
