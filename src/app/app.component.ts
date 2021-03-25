@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   content:any
-  host: string = 'http://localhost:8080/'
+  host: string = 'https://pegonet-nodered.eu-gb.mybluemix.net'
 
   constructor(private http: HttpClient) { }
 
@@ -31,14 +31,34 @@ export class AppComponent {
   }
 
   getList(){
-    let urlQuery = `${this.host}list/`;
+    let urlQuery = `${this.host}/requests/`;
     return this.http.get<any>(urlQuery);  
   }
 
   createRequest(){
     console.log('new Request: ', this.content)
-    let urlQuery = `${this.host}insert/${encodeURI(this.content)}`;
-    return this.http.get<any>(urlQuery);  
+    let urlQuery = `${this.host}/request`;
+
+    // let sample = [
+    //   {
+    //     "id": "8n1QTUNBVL630KhOZxVq",
+    //     "data": {
+    //       "input": "/filmes/assistir-10-coisas-que-deveriamos-fazer-antes-de-nos-separar-online-hd-dublado/",
+    //       "output": "{\"input\":\"/filmes/assistir-10-coisas-que-deveriamos-fazer-antes-de-nos-separar-online-hd-dublado/\",\"name\":\"pobreflix.getVideo\"}",
+    //       "status": 1,
+    //       "date": { "seconds": 1593305604, "nanoseconds": 279000000 },
+    //       "action": "pobreflix.getVideo"
+    //     }
+    //   }
+    // ];
+
+
+
+
+    let reqBody = {
+      text: this.content,
+    };
+    return this.http.post<any>(urlQuery, reqBody);  
   }
 
 
