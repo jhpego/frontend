@@ -16,7 +16,8 @@ type Request = {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  content:any
+  content:any;
+  isAsyncRequest: boolean = false;
   host: string = 'https://pegonet-nodered.eu-gb.mybluemix.net'
 
   constructor(private http: HttpClient) { }
@@ -55,6 +56,7 @@ export class AppComponent {
       })
     }
     let urlQuery = `${this.host}/request`;
+    urlQuery = this.isAsyncRequest ? `${urlQuery}?async=1` : `${urlQuery}`
     let reqBody = newRequest;
 
 
