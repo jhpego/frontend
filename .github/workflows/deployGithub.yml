@@ -29,8 +29,7 @@ jobs:
             folder: dist/frontend
             clean: true
             clean-exclude: |
-              special-file.txt
-              some/*.txt
+              CNAME
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BASE_BRANCH: master
