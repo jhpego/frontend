@@ -21,11 +21,15 @@ jobs:
       run: |
          npm install -g @angular/cli
          npm install
-         ng build --prod --base-href="/frontend/"
+         ng build --prod --base-href="/frontend/"         
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v2
+      uses: JamesIves/github-pages-deploy-action@4.1.1
+      with:
+            branch: gh-pages
+            folder: dist/frontend
+            clean: true
+            clean-exclude: |
+              CNAME
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BASE_BRANCH: master
-        BRANCH: gh-pages
-        FOLDER: dist/frontend
