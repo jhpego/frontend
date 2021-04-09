@@ -1,0 +1,37 @@
+https://sheets.googleapis.com/v4/spreadsheets/1vjQ0UtI1b9Dj7IPdJ3kBJL-_XSiEDRcD8SUx4v4uulc/values/Folha1!A1:D5?key=AIzaSyC1RgedUNWnWcQjNCjntOn1FStYia1JzOg
+###
+
+GET /v4/spreadsheets/1vjQ0UtI1b9Dj7IPdJ3kBJL-_XSiEDRcD8SUx4v4uulc/values/Sheet1!A1:D5 HTTPS
+Host: sheets.googleapis.com
+content-type: application/json
+
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
+
+###
+
+PUT https://sheets.googleapis.com/v4/spreadsheets/1vjQ0UtI1b9Dj7IPdJ3kBJL-_XSiEDRcD8SUx4v4uulc/values/Folha1!A1:E1?valueInputOption=USER_ENTERED&key=AIzaSyC1RgedUNWnWcQjNCjntOn1FStYia1JzOg
+
+{
+  "range": "Folha1!A1:D5",
+  "majorDimension": "ROWS",
+  "values": [
+    ["Door", "$15", "2", "3/15/2016"],
+    ["Engine", "$100", "1", "3/20/2016"],
+  ],
+}
+
+###
+
+POST https://pegonet-nodered.eu-gb.mybluemix.net/requests
+
+{
+      "action": "screenshot"',
+      "status": -1,
+      "input": "{
+        \"text\": \"http:\/\/abola.pt\"
+      }"
+}
+
