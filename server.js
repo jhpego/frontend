@@ -3,10 +3,10 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(__dirname + '/dist/out-tsc/app'));
+app.use(express.static(__dirname + '/dist/pegonet-frontend'));
 
 app.get('/*', (req,res,next) => {
-    res.sendFile(path.join(__dirname + '/dist/out-tsc/app'));
+    res.sendFile(path.join(__dirname + '/dist/pegonet-frontend'));
 });
 
 
