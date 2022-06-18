@@ -1,21 +1,33 @@
-<h1 class="app-title">Pegonet v5</h1>
+<h1 class="app-title">Pegonet v6</h1>
 
 <!-- <video class="movie-screen" src="{{ movie_url }}" controls autoplay ></video> -->
 <div>
-  <ul> 
-    <li><a routerLink="/first-page" routerLinkActive="active">First Page</a></li>
-    <li><a routerLink="/second-page" routerLinkActive="active">Second Page</a></li>
+  <ul>
+    <li>
+      <a routerLink="/first-page" routerLinkActive="active">First Page</a>
+    </li>
+    <li>
+      <a routerLink="/second-page" routerLinkActive="active">Second Page</a>
+    </li>
   </ul>
 </div>
 <form (submit)="submitForm()">
-  <input [(ngModel)]="content" placeholder="Inserir pesquisa..."  name="content"/>
+  <input
+    [(ngModel)]="content"
+    placeholder="Inserir pesquisa..."
+    name="content"
+  />
   <button>Inserir</button>
   <button type="button" (click)="listRequests()">Listar</button>
-  <input type="checkbox"   [(ngModel)]="isAsyncRequest"  [ngModelOptions]="{standalone: true}"/>
-</form> 
+  <input
+    type="checkbox"
+    [(ngModel)]="isAsyncRequest"
+    [ngModelOptions]="{ standalone: true }"
+  />
+</form>
 
 <router-outlet></router-outlet>
 
 <div>this is the footer</div>
 
-<!-- <router-outlet></router-outlet> --> 
+<!-- <router-outlet></router-outlet> -->
