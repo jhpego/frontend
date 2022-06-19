@@ -1,0 +1,10 @@
+<p>shop-list works!</p>
+<div *ngFor="let currShopItem of shoppingList$ | async as shoppingList">
+  <button
+    class="shoppingItem"
+    (click)="togglePurchase(currShopItem)"
+    [class.purchased]="currShopItem.purchased"
+  >
+    {{ currShopItem.name }}
+  </button>
+</div>
