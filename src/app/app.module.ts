@@ -15,6 +15,13 @@ import { Cent2EurPipe } from './services/app.pipes';
 import { ShopTotalsComponent } from './shop-totals/shop-totals.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { BottomMenuComponent } from './bottom-menu/bottom-menu.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { ShopItemDetailComponent } from './shop-item-detail/shop-item-detail.component';
+import { MatListModule } from '@angular/material/list';
+import { AppNavigatorComponent } from './app-navigator/app-navigator.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +32,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     ShopItemComponent,
     Cent2EurPipe,
     ShopTotalsComponent,
+    BottomMenuComponent,
+    ShopItemDetailComponent,
+    AppNavigatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +45,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatCardModule,
     MatProgressBarModule,
     MatGridListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatBottomSheetModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

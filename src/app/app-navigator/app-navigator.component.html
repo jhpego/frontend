@@ -1,0 +1,26 @@
+<button
+  mat-icon-button
+  class="btn-nav"
+  aria-label="Example icon-button with heart icon"
+  routerLink="/first-page"
+  routerLinkActive="active"
+>
+  <mat-icon>dashboard</mat-icon>
+</button>
+<button
+  mat-icon-button
+  class="btn-nav"
+  aria-label="Example icon-button with share icon"
+  routerLink="/second-page"
+  routerLinkActive="active"
+>
+  <mat-icon>shopping_cart</mat-icon>
+</button>
+<button
+  mat-icon-button
+  class="btn-nav"
+  aria-label="Example icon-button with share icon"
+  (click)="openBottomMenu()"
+>
+  <mat-icon>menu</mat-icon>
+</button>

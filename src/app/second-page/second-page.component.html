@@ -1,14 +1,1 @@
-<form (submit)="submitForm()">
-  <input
-    [(ngModel)]="content"
-    placeholder="Inserir pesquisa..."
-    name="content"
-  />
-  <button>Inserir</button>
-  <button type="button" (click)="listRequests()">Listar</button>
-  <input
-    type="checkbox"
-    [(ngModel)]="isAsyncRequest"
-    [ngModelOptions]="{ standalone: true }"
-  />
-</form>
+<app-shop-list></app-shop-list>

@@ -1,17 +1,20 @@
-<h1 class="app-title">Pegonet v6</h1>
+<mat-toolbar>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <img src="assets/images/logo.png" height="30px" />
+  </button>
+  <span>Shopping Trip</span>
+  <span class="example-spacer"></span>
+  <app-app-navigator></app-app-navigator>
+</mat-toolbar>
 
-<!-- <video class="movie-screen" src="{{ movie_url }}" controls autoplay ></video> -->
-<div>
-  <ul>
-    <li>
-      <a routerLink="/first-page" routerLinkActive="active">First Page</a>
-    </li>
-    <li>
-      <a routerLink="/second-page" routerLinkActive="active">Second Page</a>
-    </li>
-  </ul>
+<div class="app-content">
+  <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
-
-<div>this is the footer</div>
+<div class="app-footer">
+  <div>this is the footer</div>
+</div>
