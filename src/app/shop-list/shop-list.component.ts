@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ShopItem } from '../models/shop-item.model';
+import { ShopListService } from '../shop-list.service';
 
 @Component({
   selector: 'app-shop-list',
@@ -8,34 +9,9 @@ import { ShopItem } from '../models/shop-item.model';
   styleUrls: ['./shop-list.component.scss'],
 })
 export class ShopListComponent implements OnInit {
-  constructor() {}
+  constructor(private shopListService: ShopListService) {}
 
-  shoppingList$: Observable<ShopItem[]> = of([
-    {
-      id: '1',
-      name: 'arroz',
-      purchased: false,
-      price: 0.95,
-    },
-    {
-      id: '2',
-      name: 'coentros',
-      purchased: false,
-      price: 0.75,
-    },
-    {
-      id: '3',
-      name: 'shampoo',
-      purchased: false,
-      price: 2.5,
-    },
-    {
-      id: '4',
-      name: 'carne',
-      purchased: false,
-      price: 3,
-    },
-  ]);
+  shoppingList$: Observable<ShopItem[]> = this.shopListService.getShopItems();
 
   ngOnInit(): void {}
 }
