@@ -11,6 +11,7 @@ import { ShopListService } from '../services/shop-list.service';
 export class ShopListComponent implements OnInit {
   constructor(private shopListService: ShopListService) {}
 
+  filterJustUnpurchased: boolean = false;
   onPurchased$: Subject<ShopItem> = new Subject<ShopItem>();
   shoppingList$: Observable<ShopItem[]> = this.shopListService
     .getShopItems()
@@ -28,5 +29,15 @@ export class ShopListComponent implements OnInit {
 
   updatePurchased(shopitem: ShopItem) {
     this.onPurchased$.next(shopitem);
+  }
+
+  filterShopItems(shopItems: ShopItem[]) {
+    if (shopItems == null) return [];
+    const filtered = shopItems.filter(
+      (currItem) =>
+        !this.filterJustUnpurchased ||
+        (this.filterJustUnpurchased && !currItem.purchased)
+    );
+    return filtered;
   }
 }

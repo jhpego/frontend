@@ -1,6 +1,12 @@
 <div class="shop-list">
   <div class="grid-container">
-    <div *ngFor="let currShopItem of shoppingList$ | async as shoppingList">
+    <div
+      *ngFor="
+        let currShopItem of filterShopItems(
+          shoppingList$ | async
+        ) as shoppingList
+      "
+    >
       <app-shop-item
         [shopItem]="currShopItem"
         (purchase)="updatePurchased($event)"
@@ -18,5 +24,8 @@
       ></app-shop-item>
     </mat-grid-tile>
   </mat-grid-list> -->
+  <mat-slide-toggle [(ngModel)]="filterJustUnpurchased">
+    JustUnpurchased
+  </mat-slide-toggle>
   <app-shop-totals [obsPurchased]="onPurchased$"></app-shop-totals>
 </div>

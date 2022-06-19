@@ -22,6 +22,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { ShopItemDetailComponent } from './shop-item-detail/shop-item-detail.component';
 import { MatListModule } from '@angular/material/list';
 import { AppNavigatorComponent } from './app-navigator/app-navigator.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { AppNavigatorComponent } from './app-navigator/app-navigator.component';
     MatIconModule,
     MatBottomSheetModule,
     MatListModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
