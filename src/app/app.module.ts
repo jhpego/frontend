@@ -11,6 +11,7 @@ import { ShopListComponent } from './shop-list/shop-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShopItemComponent } from './shop-item/shop-item.component';
 import { MatCardModule } from '@angular/material/card';
+import { Cent2EurPipe } from './services/app.pipes';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MatCardModule } from '@angular/material/card';
     SecondPageComponent,
     ShopListComponent,
     ShopItemComponent,
+    Cent2EurPipe,
   ],
   imports: [
     BrowserModule,

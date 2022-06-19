@@ -1,4 +1,10 @@
 <p>shop-list works!</p>
+<div>Total: {{ shopTotal | Cent2Eur }}</div>
+<div>Purchased: {{ shopPurchased | Cent2Eur }}</div>
+<div>Remaining: {{ shopTotal - shopPurchased | Cent2Eur }}</div>
 <div *ngFor="let currShopItem of shoppingList$ | async as shoppingList">
-  <app-shop-item [shopItem]="currShopItem"></app-shop-item>
+  <app-shop-item
+    [shopItem]="currShopItem"
+    (purchase)="updatePurchased($event)"
+  ></app-shop-item>
 </div>
