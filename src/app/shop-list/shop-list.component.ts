@@ -15,27 +15,27 @@ export class ShopListComponent implements OnInit {
       id: '1',
       name: 'arroz',
       purchased: false,
+      price: 0.95,
     },
     {
       id: '2',
       name: 'coentros',
       purchased: false,
+      price: 0.75,
     },
     {
       id: '3',
       name: 'shampoo',
       purchased: false,
+      price: 2.5,
     },
     {
       id: '4',
       name: 'carne',
       purchased: false,
+      price: 3,
     },
   ]);
 
   ngOnInit(): void {}
-
-  togglePurchase(item: ShopItem) {
-    item.purchased = !item.purchased;
-  }
 }

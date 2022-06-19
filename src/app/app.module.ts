@@ -8,6 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { SecondPageComponent } from './second-page/second-page.component';
 import { ShopListComponent } from './shop-list/shop-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShopItemComponent } from './shop-item/shop-item.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -15,15 +18,17 @@ import { ShopListComponent } from './shop-list/shop-list.component';
     FirstPageComponent,
     SecondPageComponent,
     ShopListComponent,
-    
+    ShopItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, 
+    FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatCardModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

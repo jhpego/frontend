@@ -1,0 +1,7 @@
+.shoppingItem {
+  //   color: green;
+  background-color: green;
+  &.purchased {
+    background-color: gray;
+  }
+}
