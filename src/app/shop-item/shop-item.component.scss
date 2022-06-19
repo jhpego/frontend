@@ -1,6 +1,6 @@
 .shoppingItem {
   //   color: green;
-  background-color: green;
+  //   background-color: green;
   width: 100%;
   //   margin: 20px;
   &.purchased {
@@ -10,5 +10,9 @@
       text-decoration: line-through;
       color: red;
     }
+  }
+
+  .mat-card-actions {
+    text-align: right;
   }
 }

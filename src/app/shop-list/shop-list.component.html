@@ -1,11 +1,13 @@
-<mat-grid-list cols="3">
-  <mat-grid-tile
-    *ngFor="let currShopItem of shoppingList$ | async as shoppingList"
-  >
-    <app-shop-item
-      [shopItem]="currShopItem"
-      (purchase)="updatePurchased($event)"
-    ></app-shop-item>
-  </mat-grid-tile>
-</mat-grid-list>
-<app-shop-totals [obsPurchased]="onPurchased$"></app-shop-totals>
+<div class="shop-list">
+  <mat-grid-list cols="3">
+    <mat-grid-tile
+      *ngFor="let currShopItem of shoppingList$ | async as shoppingList"
+    >
+      <app-shop-item
+        [shopItem]="currShopItem"
+        (purchase)="updatePurchased($event)"
+      ></app-shop-item>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <app-shop-totals [obsPurchased]="onPurchased$"></app-shop-totals>
+</div>
