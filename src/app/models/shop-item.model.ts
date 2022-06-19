@@ -5,6 +5,6 @@ export class ShopItem {
   quantity?: number;
   category?: number;
   price?: number;
-  purchased: boolean;
+  purchased?: boolean;
   image?: string;
 }

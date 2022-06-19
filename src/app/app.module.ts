@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShopItemComponent } from './shop-item/shop-item.component';
 import { MatCardModule } from '@angular/material/card';
 import { Cent2EurPipe } from './services/app.pipes';
+import { ShopTotalsComponent } from './shop-totals/shop-totals.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { Cent2EurPipe } from './services/app.pipes';
     ShopListComponent,
     ShopItemComponent,
     Cent2EurPipe,
+    ShopTotalsComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,8 @@ import { Cent2EurPipe } from './services/app.pipes';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatProgressBarModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

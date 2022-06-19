@@ -1,10 +1,12 @@
-<p>shop-list works!</p>
-<div>Total: {{ shopTotal | Cent2Eur }}</div>
-<div>Purchased: {{ shopPurchased | Cent2Eur }}</div>
-<div>Remaining: {{ shopTotal - shopPurchased | Cent2Eur }}</div>
-<div *ngFor="let currShopItem of shoppingList$ | async as shoppingList">
-  <app-shop-item
-    [shopItem]="currShopItem"
-    (purchase)="updatePurchased($event)"
-  ></app-shop-item>
-</div>
+<app-shop-totals [obsPurchased]="onPurchased$"></app-shop-totals>
+
+<mat-grid-list cols="3">
+  <mat-grid-tile
+    *ngFor="let currShopItem of shoppingList$ | async as shoppingList"
+  >
+    <app-shop-item
+      [shopItem]="currShopItem"
+      (purchase)="updatePurchased($event)"
+    ></app-shop-item>
+  </mat-grid-tile>
+</mat-grid-list>

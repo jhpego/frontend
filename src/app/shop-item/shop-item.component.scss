@@ -1,7 +1,13 @@
 .shoppingItem {
   //   color: green;
   background-color: green;
+  //   margin: 20px;
   &.purchased {
-    background-color: gray;
+    // background-color: gray;
+    opacity: 0.3;
+    .mat-card-title {
+      text-decoration: line-through;
+      color: red;
+    }
   }
 }
