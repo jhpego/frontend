@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { SecondPageComponent } from './second-page/second-page.component';
 import { ShopListComponent } from './shop-list/shop-list.component';
@@ -23,6 +23,12 @@ import { ShopItemDetailComponent } from './shop-item-detail/shop-item-detail.com
 import { MatListModule } from '@angular/material/list';
 import { AppNavigatorComponent } from './app-navigator/app-navigator.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -51,6 +57,14 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatBottomSheetModule,
     MatListModule,
     MatSlideToggleModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

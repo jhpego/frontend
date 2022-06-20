@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, Subject, tap } from 'rxjs';
+import { map, Observable, of, Subject, tap } from 'rxjs';
+import { ShopGroup } from '../models/shop-display.model';
 import { ShopItem } from '../models/shop-item.model';
 import { ShopListService } from '../services/shop-list.service';
 
@@ -13,16 +14,40 @@ export class ShopListComponent implements OnInit {
 
   filterJustUnpurchased: boolean = false;
   onPurchased$: Subject<ShopItem> = new Subject<ShopItem>();
-  shoppingList$: Observable<ShopItem[]> = this.shopListService
+  shoppingList$: Observable<ShopGroup[]> = this.shopListService
     .getShopItems()
     .pipe(
-      tap((shoplist) => {
-        shoplist.forEach((currItem) => {
-          let shopItemClone = { ...currItem };
-          shopItemClone.purchased = null;
-          this.onPurchased$.next(shopItemClone);
-        });
+      map((shoplist: ShopItem[]) => {
+        const groupByCategory: { [key: string]: ShopItem[] } = shoplist.reduce(
+          (group: { [key: string]: ShopItem[] }, item: ShopItem) => {
+            const { category } = item;
+            group[category] = group[category] ?? [];
+            group[category].push(item);
+            return group;
+          },
+          {}
+        );
+
+        const shopGroups: ShopGroup[] = Object.keys(groupByCategory).map(
+          (key) => {
+            return {
+              categoryId: parseInt(key),
+              categoryName: key,
+              items: groupByCategory[key],
+            };
+          }
+        );
+        debugger;
+        return shopGroups;
+
+        // shoplist.forEach((currItem) => {
+        //   let shopItemClone = { ...currItem };
+        //   shopItemClone.purchased = null;
+        //   this.onPurchased$.next(shopItemClone);
+        // });
       })
+      // tap(
+      // })
     );
 
   ngOnInit(): void {}
@@ -31,13 +56,14 @@ export class ShopListComponent implements OnInit {
     this.onPurchased$.next(shopitem);
   }
 
-  filterShopItems(shopItems: ShopItem[]) {
-    if (shopItems == null) return [];
-    const filtered = shopItems.filter(
-      (currItem) =>
-        !this.filterJustUnpurchased ||
-        (this.filterJustUnpurchased && !currItem.purchased)
-    );
-    return filtered;
+  filterShopItems(shopItems: ShopGroup[]) {
+    return shopItems;
+    // if (shopItems == null) return [];
+    // const filtered = shopItems.filter(
+    //   (currItem) =>
+    //     !this.filterJustUnpurchased ||
+    //     (this.filterJustUnpurchased && !currItem.purchased)
+    // );
+    // return filtered;
   }
 }

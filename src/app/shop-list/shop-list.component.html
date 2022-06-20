@@ -1,16 +1,21 @@
 <div class="shop-list">
-  <div class="grid-container">
+  <div>
     <div
       *ngFor="
-        let currShopItem of filterShopItems(
+        let currShopGroup of filterShopItems(
           shoppingList$ | async
         ) as shoppingList
       "
     >
-      <app-shop-item
-        [shopItem]="currShopItem"
-        (purchase)="updatePurchased($event)"
-      ></app-shop-item>
+      <h2>{{ "category" + currShopGroup.categoryName | translate }}</h2>
+      <div class="grid-container">
+        <div *ngFor="let currShopItem of currShopGroup.items">
+          <app-shop-item
+            [shopItem]="currShopItem"
+            (purchase)="updatePurchased($event)"
+          ></app-shop-item>
+        </div>
+      </div>
     </div>
   </div>
 
