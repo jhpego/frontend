@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { ShopItem } from '../models/shop-item.model';
 
 @Component({
@@ -16,15 +16,17 @@ export class ShopTotalsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.onPurchased$.subscribe((shopItem) => {
-      let price = shopItem.price;
-      if (shopItem.purchased != null) {
-        price = shopItem.purchased ? shopItem.price : -shopItem.price;
-        this.purchased += price;
-      } else {
-        this.total += price;
-      }
-    });
+    this.onPurchased$
+      .pipe(filter((data) => data != null))
+      .subscribe((shopItem) => {
+        let price = shopItem.price;
+        if (shopItem.purchased != null) {
+          price = shopItem.purchased ? shopItem.price : -shopItem.price;
+          this.purchased += price;
+        } else {
+          this.total += price;
+        }
+      });
   }
 
   toggleDisplay() {

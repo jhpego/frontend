@@ -1,36 +1,40 @@
 <div class="shop-list">
-  <div>
-    <div
-      *ngFor="
-        let currShopGroup of filterShopItems(
-          shoppingList$ | async
-        ) as shoppingList
-      "
-    >
-      <h2>{{ "category" + currShopGroup.categoryName | translate }}</h2>
-      <div class="grid-container">
-        <div *ngFor="let currShopItem of currShopGroup.items">
-          <app-shop-item
-            [shopItem]="currShopItem"
-            (purchase)="updatePurchased($event)"
-          ></app-shop-item>
+  <div *ngIf="shoppingList$ | async as shoppingList">
+    <div *ngFor="let currShopGroup of shoppingList.sugested">
+      <ng-container *ngIf="currShopGroup.items.length > 0">
+        <h2>{{ "category" + currShopGroup.categoryName | translate }}</h2>
+        <div class="grid-container">
+          <div *ngFor="let currShopItem of currShopGroup.items">
+            <app-shop-item
+              [shopItem]="currShopItem"
+              (purchase)="updatePurchased($event)"
+            ></app-shop-item>
+          </div>
         </div>
-      </div>
+      </ng-container>
     </div>
-  </div>
 
-  <!-- <mat-grid-list cols="3" [rowHeight]="250" [gutterSize]="5">
-    <mat-grid-tile
-      *ngFor="let currShopItem of shoppingList$ | async as shoppingList"
-    >
-      <app-shop-item
-        [shopItem]="currShopItem"
-        (purchase)="updatePurchased($event)"
-      ></app-shop-item>
-    </mat-grid-tile>
-  </mat-grid-list> -->
-  <mat-slide-toggle [(ngModel)]="filterJustUnpurchased">
-    JustUnpurchased
-  </mat-slide-toggle>
-  <app-shop-totals [obsPurchased]="onPurchased$"></app-shop-totals>
+    <h2 (click)="toggleShowAquired()">aquired</h2>
+
+    <ng-container *ngIf="showAquired">
+      <div *ngFor="let currShopGroup of shoppingList.aquired">
+        <ng-container *ngIf="currShopGroup.items.length > 0">
+          <h2>{{ "category" + currShopGroup.categoryName | translate }}</h2>
+          <div class="grid-container">
+            <div *ngFor="let currShopItem of currShopGroup.items">
+              <app-shop-item
+                [shopItem]="currShopItem"
+                (purchase)="updatePurchased($event)"
+              ></app-shop-item>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
+    <mat-slide-toggle [(ngModel)]="filterJustUnpurchased">
+      JustUnpurchased
+    </mat-slide-toggle>
+    <app-shop-totals [obsPurchased]="onPurchased$"></app-shop-totals>
+  </div>
 </div>
