@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, of } from 'rxjs';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { ShopItem } from '../models/shop-item.model';
 
 @Injectable({
@@ -20,4 +20,6 @@ export class ShopListService {
       })
     );
   }
+
+  onItemPurchased$ = new BehaviorSubject<ShopItem>(null);
 }

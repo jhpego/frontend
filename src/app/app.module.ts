@@ -25,6 +25,7 @@ import { AppNavigatorComponent } from './app-navigator/app-navigator.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ShopListDisplayComponent } from './shop-list-display/shop-list-display.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -42,6 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BottomMenuComponent,
     ShopItemDetailComponent,
     AppNavigatorComponent,
+    ShopListDisplayComponent,
   ],
   imports: [
     BrowserModule,

@@ -21,50 +21,48 @@ import { ShopItemComponent } from '../shop-item/shop-item.component';
 export class ShopListComponent implements OnInit {
   constructor(private shopListService: ShopListService) {}
 
-  showAquired: boolean = true;
-  filterJustUnpurchased: boolean = false;
-  onPurchased$: Subject<ShopItem> = new BehaviorSubject<ShopItem>(null);
-  shoppingList$: Observable<ShopGroups> = combineLatest([
-    this.getShopItemsGrouped(),
-    this.onPurchased$,
-  ]).pipe(
-    tap((values) => {
-      console.log('combined', values);
-    }),
-    map(([shopGroups, shopItem]) => {
-      if (shopItem) {
-        const targetGroup = shopItem.purchased ? 'aquired' : 'sugested';
-        const sourceGroup = !shopItem.purchased ? 'aquired' : 'sugested';
+  shoppingList$: Observable<ShopGroups> = this.getShopItemsGrouped();
+  // shoppingList$: Observable<ShopGroups> = combineLatest([
+  //   this.getShopItemsGrouped(),
+  //   this.onPurchased$,
+  // ]).pipe(
+  //   tap((values) => {
+  //     console.log('combined', values);
+  //   }),
+  //   map(([shopGroups, shopItem]) => {
+  //     if (shopItem) {
+  //       const targetGroup = shopItem.purchased ? 'aquired' : 'sugested';
+  //       const sourceGroup = !shopItem.purchased ? 'aquired' : 'sugested';
 
-        const sourceCategory = shopGroups[sourceGroup].find(
-          (cat) => cat.categoryId == shopItem.category
-        );
-        sourceCategory.items = sourceCategory.items.filter(
-          (item) => item.id !== shopItem.id
-        );
+  //       const sourceCategory = shopGroups[sourceGroup].find(
+  //         (cat) => cat.categoryId == shopItem.category
+  //       );
+  //       sourceCategory.items = sourceCategory.items.filter(
+  //         (item) => item.id !== shopItem.id
+  //       );
 
-        let targetCategory = shopGroups[targetGroup].find(
-          (cat) => cat.categoryId == shopItem.category
-        );
-        if (!targetCategory) {
-          targetCategory = {
-            categoryId: shopItem.category,
-            categoryName: shopItem.category.toString(),
-            items: [],
-          };
-          shopGroups[targetGroup].push(targetCategory);
-        }
-        targetCategory.items.push(shopItem);
-      }
-      return shopGroups;
-    })
-  );
+  //       let targetCategory = shopGroups[targetGroup].find(
+  //         (cat) => cat.categoryId == shopItem.category
+  //       );
+  //       if (!targetCategory) {
+  //         targetCategory = {
+  //           categoryId: shopItem.category,
+  //           categoryName: shopItem.category.toString(),
+  //           items: [],
+  //         };
+  //         shopGroups[targetGroup].push(targetCategory);
+  //       }
+  //       targetCategory.items.push(shopItem);
+  //     }
+  //     return shopGroups;
+  //   })
+  // );
 
   ngOnInit(): void {}
 
-  updatePurchased(shopitem: ShopItem) {
-    this.onPurchased$.next(shopitem);
-  }
+  // updatePurchased(shopitem: ShopItem) {
+  //   this.onPurchased$.next(shopitem);
+  // }
 
   filterShopItems(shopItems: ShopCategory[]) {
     return shopItems;
@@ -105,9 +103,5 @@ export class ShopListComponent implements OnInit {
         };
       })
     );
-  }
-
-  toggleShowAquired() {
-    this.showAquired = !this.showAquired;
   }
 }
