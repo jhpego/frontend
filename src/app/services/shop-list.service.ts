@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, tap } from 'rxjs';
 import { ShopItem } from '../models/shop-item.model';
 
 @Injectable({
@@ -15,6 +15,7 @@ export class ShopListService {
       map((result) => {
         return result.map((currItem) => {
           currItem.price = currItem.price * 100;
+          this.onItemPurchased$.next(currItem);
           return currItem;
         });
       })
