@@ -22,13 +22,18 @@ button {
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #e9e9e9;
 }
 .page-header,
 .page-footer {
-  background: red;
+  // background: red;
 }
 .page-content {
   flex: 1;
   overflow: auto;
-  background: green;
+  // background: #e9e9e9;
+}
+
+.page-footer {
+  text-align: right;
 }

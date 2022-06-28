@@ -34,6 +34,9 @@ import { ShopListDisplayComponent } from './shop-list-display/shop-list-display.
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import * as Hammer from 'hammerjs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -93,6 +96,9 @@ export class MyHammerConfig extends HammerGestureConfig {
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
     }),
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [
     {

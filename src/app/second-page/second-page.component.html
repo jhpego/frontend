@@ -1,11 +1,21 @@
 <div class="page-wrapper">
-  <div class="page-header">page header</div>
+  <div class="page-header">
+    <app-shop-totals></app-shop-totals>
+    <mat-form-field appearance="standard">
+      <mat-label>Standard form field</mat-label>
+      <input matInput placeholder="Placeholder" />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+  </div>
 
   <div class="page-content">
     <app-shop-list></app-shop-list>
   </div>
   <div class="page-footer">
-    page footer
-    <app-shop-totals></app-shop-totals>
+    <div>
+      <button mat-raised-button>Add</button>
+      <button mat-raised-button>Save</button>
+    </div>
   </div>
 </div>

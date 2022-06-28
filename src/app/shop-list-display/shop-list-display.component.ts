@@ -71,7 +71,7 @@ export class ShopListDisplayComponent implements OnInit {
     const y =
       Math.abs(event.deltaY) > 40 ? (event.deltaY > 0 ? 'Down' : 'Up') : '';
     direction += `You swiped in <b> ${x} ${y} </b> direction <hr>`;
-    console.warn(direction);
+    // console.warn(direction);
     if (x == 'Right') {
       if (this.currScreen == this.screenPages.length - 1) {
         this.currScreen = 0;

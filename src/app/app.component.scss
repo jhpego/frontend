@@ -32,10 +32,18 @@
 }
 .app-header,
 .app-footer {
-  background: silver;
+  // background: silver;
 }
 .app-content {
   flex: 1;
   overflow: auto;
-  background: pink;
+  // background: pink;
+}
+
+.title {
+  font-size: 12px;
+  margin-bottom: -15px;
+}
+
+.subtitle {
 }

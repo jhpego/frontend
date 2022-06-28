@@ -1,8 +1,8 @@
 <div (click)="toggleDisplay()" title="{{ 'Total: ' + (total | Cent2Eur) }}">
+  <mat-progress-bar [value]="getProgressValue()"> </mat-progress-bar>
   <!-- <div>Total: {{ total | Cent2Eur }}</div> -->
   <div *ngIf="!displayRemaining">Adquirido: {{ purchased | Cent2Eur }}</div>
   <div *ngIf="displayRemaining">
     Restante: {{ total - purchased | Cent2Eur }}
   </div>
-  <mat-progress-bar [value]="getProgressValue()"> </mat-progress-bar>
 </div>
