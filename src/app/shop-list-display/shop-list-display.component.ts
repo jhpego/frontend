@@ -14,11 +14,16 @@ export class ShopListDisplayComponent implements OnInit {
   onItemPurchased$: BehaviorSubject<ShopItem>;
   @Input() shoppingList: ShopGroups;
 
+  screenPages: string[] = ['Sugested', 'Aquired'];
+  currScreen: number = 0;
+
   constructor(shopListService: ShopListService) {
     this.onItemPurchased$ = shopListService.onItemPurchased$;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.currScreen = 0;
+  }
 
   toggleShowAquired() {
     this.showAquired = !this.showAquired;
@@ -56,5 +61,29 @@ export class ShopListDisplayComponent implements OnInit {
       targetCategory.items.push(shopItem);
     }
     return shopGroups;
+  }
+
+  onSwipe(event) {
+    let direction = '';
+    console.log('swipe', event);
+    const x =
+      Math.abs(event.deltaX) > 40 ? (event.deltaX > 0 ? 'Right' : 'Left') : '';
+    const y =
+      Math.abs(event.deltaY) > 40 ? (event.deltaY > 0 ? 'Down' : 'Up') : '';
+    direction += `You swiped in <b> ${x} ${y} </b> direction <hr>`;
+    console.warn(direction);
+    if (x == 'Right') {
+      if (this.currScreen == this.screenPages.length - 1) {
+        this.currScreen = 0;
+      } else {
+        this.currScreen++;
+      }
+    } else if (x == 'Left') {
+      if (this.currScreen == 0) {
+        this.currScreen = this.screenPages.length - 1;
+      } else {
+        this.currScreen--;
+      }
+    }
   }
 }
