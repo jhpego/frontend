@@ -6,4 +6,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './second-page.component.html',
   styleUrls: ['./second-page.component.scss'],
 })
-export class SecondPageComponent {}
+export class SecondPageComponent {
+  searchProduct: string;
+}

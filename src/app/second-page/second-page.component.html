@@ -1,16 +1,20 @@
 <div class="page-wrapper">
   <div class="page-header">
     <app-shop-totals></app-shop-totals>
-    <mat-form-field appearance="standard">
-      <mat-label>Standard form field</mat-label>
-      <input matInput placeholder="Placeholder" />
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
+    <mat-form-field appearance="standard" class="search-input">
+      <!-- <mat-label>Standard form field</mat-label> -->
+      <input
+        matInput
+        placeholder="Search Product..."
+        [(ngModel)]="searchProduct"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+      <!-- <mat-hint>Hint</mat-hint> -->
     </mat-form-field>
   </div>
 
   <div class="page-content">
-    <app-shop-list></app-shop-list>
+    <app-shop-list [searchProduct]="searchProduct"></app-shop-list>
   </div>
   <div class="page-footer">
     <div>

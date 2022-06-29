@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   combineLatest,
   map,
@@ -19,6 +19,7 @@ import { ShopItemComponent } from '../shop-item/shop-item.component';
   styleUrls: ['./shop-list.component.scss'],
 })
 export class ShopListComponent implements OnInit {
+  @Input() searchProduct = '';
   constructor(private shopListService: ShopListService) {}
 
   shoppingList$: Observable<ShopGroups> = this.getShopItemsGrouped();

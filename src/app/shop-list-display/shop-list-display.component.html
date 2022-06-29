@@ -1,11 +1,11 @@
 <div (swipe)="onSwipe($event)">
-  <pre>{{ currScreen | json }}</pre>
+  <!-- <pre>{{ currScreen | json }}</pre> -->
   <div *ngIf="screenPages[currScreen] == 'Sugested'">
     <div *ngFor="let currShopGroup of shoppingList.sugested">
       <ng-container *ngIf="currShopGroup.items.length > 0">
         <h2>{{ "category" + currShopGroup.categoryName | translate }}</h2>
         <div class="grid-container">
-          <div *ngFor="let currShopItem of currShopGroup.items">
+          <div *ngFor="let currShopItem of filterItems(currShopGroup.items)">
             <app-shop-item
               [shopItem]="currShopItem"
               (purchase)="updatePurchased($event)"

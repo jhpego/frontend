@@ -13,6 +13,7 @@ export class ShopListDisplayComponent implements OnInit {
   showAquired: boolean = true;
   onItemPurchased$: BehaviorSubject<ShopItem>;
   @Input() shoppingList: ShopGroups;
+  @Input() searchProduct: string = '';
 
   screenPages: string[] = ['Sugested', 'Aquired'];
   currScreen: number = 0;
@@ -85,5 +86,14 @@ export class ShopListDisplayComponent implements OnInit {
         this.currScreen--;
       }
     }
+  }
+
+  filterItems(shopItems: ShopItem[]) {
+    if (this.searchProduct == '' || !this.searchProduct) {
+      return shopItems;
+    }
+    return shopItems.filter((currItem) =>
+      currItem.name.includes(this.searchProduct)
+    );
   }
 }

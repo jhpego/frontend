@@ -2,6 +2,7 @@
   <div *ngIf="shoppingList$ | async as shoppingList">
     <app-shop-list-display
       [shoppingList]="shoppingList"
+      [searchProduct]="searchProduct"
     ></app-shop-list-display>
     <!-- <mat-slide-toggle [(ngModel)]="filterJustUnpurchased">
       JustUnpurchased
