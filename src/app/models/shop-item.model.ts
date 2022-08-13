@@ -7,4 +7,5 @@ export class ShopItem {
   price?: number;
   purchased?: boolean;
   image?: string;
+  safeImage: any;
 }
