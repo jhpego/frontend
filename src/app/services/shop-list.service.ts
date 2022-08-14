@@ -12,7 +12,7 @@ export class ShopListService {
   constructor(private http: HttpClient, private domSanitizer: DomSanitizer) {}
 
   getShopItems(): Observable<ShopItem[]> {
-    const url = environment.url_api + '/api/shop/list';
+    const url = environment.url_api + '/api/shop/';
     return this.http.get<ShopItem[]>(url).pipe(
       map((result) => {
         return result.map((currItem) => {
