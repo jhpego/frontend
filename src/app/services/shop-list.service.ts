@@ -30,5 +30,10 @@ export class ShopListService {
     );
   }
 
+  addProduct(product: ShopItem) {
+    const url = environment.url_api + '/api/shop/product';
+    return this.http.post<ShopItem[]>(url, product);
+  }
+
   onItemPurchased$ = new BehaviorSubject<ShopItem>(null);
 }

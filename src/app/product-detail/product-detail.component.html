@@ -1,0 +1,14 @@
+<form [formGroup]="profileForm" (submit)="onSubmit(profileForm, $event)">
+  <label for="name">Name: </label>
+  <input id="name" type="text" formControlName="name" />
+
+  <label for="price">Price: </label>
+  <input id="price" type="text" formControlName="price" />
+
+  <label for="category">Category: </label>
+  <input id="category" type="text" formControlName="category" />
+
+  <label for="image">Image: </label>
+  <input id="image" type="text" formControlName="image" />
+  <button>Submit</button>
+</form>

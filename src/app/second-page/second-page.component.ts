@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ProductDetailComponent } from '../product-detail/product-detail.component';
 
 @Component({
   selector: 'app-second-page',
@@ -8,4 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecondPageComponent {
   searchProduct: string;
+  constructor(public dialog: MatDialog) {}
+
+  addProduct() {
+    this.dialog.open(ProductDetailComponent, {
+      width: '250px',
+    });
+  }
 }

@@ -37,6 +37,9 @@ import * as Hammer from 'hammerjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -66,6 +69,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     ShopItemDetailComponent,
     AppNavigatorComponent,
     ShopListDisplayComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +86,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatBottomSheetModule,
     MatListModule,
     MatSlideToggleModule,
+    // MatDialog,
+    // MatDialogRef,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
@@ -99,6 +105,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {
@@ -106,6 +114,7 @@ export class MyHammerConfig extends HammerGestureConfig {
       useClass: MyHammerConfig,
     },
   ],
+  entryComponents: [ProductDetailComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

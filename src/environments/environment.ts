@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // url_api: 'https://jhp-nodered.herokuapp.com',
-  url_api: 'http://localhost:8000',
+  url_api: 'https://jhp-nodered.herokuapp.com',
+  // url_api: 'http://localhost:8000',
 };
 
 /*
